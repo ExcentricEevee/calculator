@@ -1,4 +1,18 @@
 let num1, operator, num2;
+const display = document.querySelector('.display');
+const result = document.querySelector('.result');
+
+/* Populate display with numbers */
+const numButtons = document.querySelectorAll('button.number');
+numButtons.forEach((button) => {
+    button.addEventListener('click', () => {
+        display.textContent += button.textContent;
+    });
+});
+
+function getDisplayValue() {
+    typeof num1 === "integer" ? num2 = parseInt(display.textContent) : num1 = parseInt(display.textContent);
+}
 
 function operate(x, y, operator) {
     switch(operator) {
