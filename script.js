@@ -14,14 +14,14 @@ const opButtons = document.querySelectorAll('button.operator');
 opButtons.forEach((button) => {
     button.addEventListener('click', () => {
         operator = button.textContent;
-        getDisplayValue();
+        num1 = parseInt(display.textContent);
         display.textContent = '';
     });
 });
 
 const equals = document.querySelector('button.equals');
 equals.addEventListener('click', () => {
-    getDisplayValue();
+    num2 = parseInt(display.textContent);
     display.textContent = operate(num1, num2, operator);
 });
 
