@@ -13,24 +13,36 @@ numButtons.forEach((button) => {
 const opButtons = document.querySelectorAll('button.operator');
 opButtons.forEach((button) => {
     button.addEventListener('click', () => {
+        if (operator !== undefined) {
+            /* process calculations in between each operator chain */
+            /* this intentionally does NOT account for Order of Operations as per TOP guidelines */
+            result = executeEquals();
+            num1 = result;
+        } else {
+            num1 = parseInt(display.textContent);
+        }
+
         operator = button.textContent;
-        num1 = parseInt(display.textContent);
         display.textContent = '';
     });
 });
 
 const equals = document.querySelector('button.equals');
 equals.addEventListener('click', () => {
-    num2 = parseInt(display.textContent);
-    display.textContent = operate(num1, num2, operator);
+    display.textContent = executeEquals();
 });
 
-function getDisplayValue() {
-    typeof num1 === "number" ? num2 = parseInt(display.textContent) : num1 = parseInt(display.textContent);
+function executeEquals() {
+    num2 = parseInt(display.textContent);
+    return operate(num1, num2, operator);
 }
 
+/* function getDisplayValue() {
+    typeof num1 === "number" ? num2 = parseInt(display.textContent) : num1 = parseInt(display.textContent);
+} */
+
 function operate(x, y, operator) {
-    switch(operator) {
+    switch (operator) {
         case "+":
             return add(x, y);
         case "-":
