@@ -32,10 +32,15 @@ function operate(operator, x, y) {
     }
 }
 
+let displayingResult = false;
 const display = document.querySelector('.display');
 const digitBtns = document.querySelectorAll('.digit');
 digitBtns.forEach(btn => {
     btn.addEventListener('click', () => {
+        if(displayingResult) {
+            display.textContent = '';
+            displayingResult = false;
+        }
         display.textContent += btn.textContent;
     });
 });
@@ -43,9 +48,11 @@ digitBtns.forEach(btn => {
 function executeEquals() {
     secondNum = parseInt(display.textContent);
     display.textContent = operate(operator, firstNum, secondNum);
-    console.log(`executeEquals call\noperator: ${operator} | 1st: ${firstNum} | 2nd: ${secondNum}`);
+    displayingResult = true;
 }
 
+ // this prevents just rapidly hitting the equals button to perform the same
+ // operation over and over again, but it works for now
 function clearVariables() {
     firstNum = undefined;
     secondNum = undefined;
@@ -61,8 +68,9 @@ operatorBtns.forEach(btn => {
 
         operator = btn.textContent;
         firstNum = parseInt(display.textContent);
-        display.textContent = '';
-        console.log(`operator event\noperator: ${operator} | 1st: ${firstNum} | 2nd: ${secondNum}`);
+        if(!displayingResult) {
+            display.textContent = '';
+        }
     });
 });
 
