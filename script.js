@@ -32,14 +32,15 @@ function operate(operator, x, y) {
     }
 }
 
-let displayingResult = false;
+let maintainingDisplay = false;
 const display = document.querySelector('.display');
 const digitBtns = document.querySelectorAll('.digit');
 digitBtns.forEach(btn => {
     btn.addEventListener('click', () => {
-        if(displayingResult) {
+        // prevent concatenating with results, etc
+        if(maintainingDisplay) {
             display.textContent = '';
-            displayingResult = false;
+            maintainingDisplay = false;
         }
         display.textContent += btn.textContent;
     });
@@ -48,11 +49,11 @@ digitBtns.forEach(btn => {
 function executeEquals() {
     secondNum = parseInt(display.textContent);
     display.textContent = operate(operator, firstNum, secondNum);
-    displayingResult = true;
+    maintainingDisplay = true;
 }
 
- // this prevents just rapidly hitting the equals button to perform the same
- // operation over and over again, but it works for now
+ // this prevents the usual calculator behavior of just rapidly hitting the 
+ // equals button to perform the same operation over again, but it works for now
 function clearVariables() {
     firstNum = undefined;
     secondNum = undefined;
@@ -68,9 +69,8 @@ operatorBtns.forEach(btn => {
 
         operator = btn.textContent;
         firstNum = parseInt(display.textContent);
-        if(!displayingResult) {
-            display.textContent = '';
-        }
+        // maintain display until numbers are clicked again
+        maintainingDisplay = true;
     });
 });
 
