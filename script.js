@@ -40,17 +40,35 @@ digitBtns.forEach(btn => {
     });
 });
 
+function executeEquals() {
+    secondNum = parseInt(display.textContent);
+    display.textContent = operate(operator, firstNum, secondNum);
+    console.log(`executeEquals call\noperator: ${operator} | 1st: ${firstNum} | 2nd: ${secondNum}`);
+}
+
+function clearVariables() {
+    firstNum = undefined;
+    secondNum = undefined;
+    operator = undefined;
+}
+
 const operatorBtns = document.querySelectorAll('.operator');
 operatorBtns.forEach(btn => {
     btn.addEventListener('click', () => {
+        if(firstNum) {
+            executeEquals();
+        }
+
         operator = btn.textContent;
         firstNum = parseInt(display.textContent);
         display.textContent = '';
+        console.log(`operator event\noperator: ${operator} | 1st: ${firstNum} | 2nd: ${secondNum}`);
     });
 });
 
 const equalsBtn = document.querySelector('.equals');
 equalsBtn.addEventListener('click', () => {
-    secondNum = parseInt(display.textContent);
-    display.textContent = operate(operator, firstNum, secondNum);
+    executeEquals();
+    // don't get caught by operatorBtn event that checks for firstNum
+    clearVariables();
 });
