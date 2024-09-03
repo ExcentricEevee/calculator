@@ -32,7 +32,7 @@ function operate(operator, x, y) {
     }
 }
 
-let maintainingDisplay = false;
+let maintainingDisplay = true;
 const display = document.querySelector('.display');
 const digitBtns = document.querySelectorAll('.digit');
 digitBtns.forEach(btn => {
