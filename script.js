@@ -46,18 +46,23 @@ digitBtns.forEach(btn => {
     });
 });
 
-function executeEquals() {
-    secondNum = parseInt(display.textContent);
-    display.textContent = operate(operator, firstNum, secondNum);
-    maintainingDisplay = true;
-}
-
  // this prevents the usual calculator behavior of just rapidly hitting the 
  // equals button to perform the same operation over again, but it works for now
-function clearVariables() {
+ function clearVariables() {
     firstNum = undefined;
     secondNum = undefined;
     operator = undefined;
+}
+
+function executeEquals() {
+    secondNum = parseInt(display.textContent);
+    if(secondNum === 0 && operator === '/') {
+        display.textContent = "You know that's not a thing. Don't break my calculator";
+        clearVariables();
+    } else {
+        display.textContent = operate(operator, firstNum, secondNum);
+    }
+    maintainingDisplay = true;
 }
 
 const operatorBtns = document.querySelectorAll('.operator');
