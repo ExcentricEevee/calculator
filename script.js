@@ -80,3 +80,10 @@ equalsBtn.addEventListener('click', () => {
     // don't get caught by operatorBtn event that checks for firstNum
     clearVariables();
 });
+
+const clearBtn = document.querySelector('.clear');
+clearBtn.addEventListener('click', () => {
+    clearVariables();
+    display.textContent = '0';
+    maintainingDisplay = true;
+})
