@@ -8,7 +8,8 @@ body {
 }
 
 .flex-container {
-    width: 450px;
+    width: 350px;
+    height: 400px;
     display: flex;
     flex-direction: column;
     background-color: #ff660048;
@@ -24,11 +25,17 @@ body {
 
 .buttons {
     margin: 12px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    flex: 1;
 }
 
-.buttons > * {
+button {
+    width: 36px;
+    height: 36px;
     font-size: 24px;
-    padding: 4px 12px;
     border-style: none;
     border-radius: 12%;
     background-color: #ececec;
@@ -36,4 +43,13 @@ body {
 
 .operator {
     color: #12ff55;
+}
+
+.clear {
+    width: 120px;
+    border-radius: 4px;
+}
+
+#zero {
+    width: 78px;
 }
