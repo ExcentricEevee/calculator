@@ -55,7 +55,7 @@ digitBtns.forEach(btn => {
 }
 
 function executeEquals() {
-    secondNum = parseInt(display.textContent);
+    secondNum = Number(display.textContent);
     if(secondNum === 0 && operator === '/') {
         display.textContent = "You know that's not a thing. Don't break my calculator";
         clearVariables();
@@ -82,7 +82,7 @@ operatorBtns.forEach(btn => {
         }
 
         operator = btn.textContent;
-        firstNum = parseInt(display.textContent);
+        firstNum = Number(display.textContent);
         // maintain display until numbers are clicked again
         maintainingDisplay = true;
     });
