@@ -65,6 +65,15 @@ function executeEquals() {
     maintainingDisplay = true;
 }
 
+const decimalBtn = document.querySelector('.decimal');
+decimalBtn.addEventListener('click', () => {
+    if(!display.textContent.includes('.')) {
+        display.textContent += decimalBtn.textContent;
+        // don't clear the starting 0, that's frustrating user experience
+        maintainingDisplay = false;
+    }
+});
+
 const operatorBtns = document.querySelectorAll('.operator');
 operatorBtns.forEach(btn => {
     btn.addEventListener('click', () => {
@@ -91,4 +100,4 @@ clearBtn.addEventListener('click', () => {
     clearVariables();
     display.textContent = '0';
     maintainingDisplay = true;
-})
+});
