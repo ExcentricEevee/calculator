@@ -57,7 +57,7 @@ digitBtns.forEach(btn => {
 function executeEquals() {
     secondNum = Number(display.textContent);
     if(secondNum === 0 && operator === '/') {
-        display.textContent = "You know that's not a thing. Don't break my calculator";
+        display.textContent = "That's not a thing. Don't break my calculator";
         clearVariables();
     } else {
         display.textContent = operate(operator, firstNum, secondNum);
