@@ -8,48 +8,51 @@ body {
 }
 
 .flex-container {
+    padding: 12px;
     width: 350px;
-    height: 400px;
-    display: flex;
-    flex-direction: column;
-    background-color: #ff660048;
-}
-
-.display {
-    margin: 12px;
-    font-size: 32px;
-    text-align: right;
-    color: #333;
-    background-color: #dfdfdf;
-}
-
-.buttons {
-    margin: 12px;
+    height: 450px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    align-items: center;
-    flex: 1;
+    background-color: #4a4a4a;
+}
+
+.display {
+    margin: 0;
+    font-size: 64px;
+    text-align: right;
+    color: #333;
+    background-color: #dfdfdf;
+    border: 2px solid #333;
+}
+
+.button-row {
+    display: flex;
 }
 
 button {
-    width: 36px;
-    height: 36px;
+    flex-grow: 1;
+    margin: 4px;
+    width: 64px;
+    height: 64px;
     font-size: 24px;
     border-style: none;
     border-radius: 12%;
-    background-color: #ececec;
+    background-color: #ff9000;
 }
 
-.operator {
-    color: #12ff55;
+.operator, .equals {
+    background-color: #12ffaa;
 }
 
 .clear {
-    width: 120px;
+    flex-grow: 3;
+    width: 201px;
     border-radius: 4px;
+    background-color: #0099ff;
 }
 
 #zero {
-    width: 78px;
+    flex-grow: 2;
+    width: 133px;
 }
