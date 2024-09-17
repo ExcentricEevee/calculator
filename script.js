@@ -57,10 +57,13 @@ digitBtns.forEach(btn => {
 function executeEquals() {
     secondNum = Number(display.textContent);
     if(secondNum === 0 && operator === '/') {
-        display.textContent = "That's not a thing. Don't break my calculator";
+        display.textContent = "Nuh uh";
         clearVariables();
     } else {
-        display.textContent = operate(operator, firstNum, secondNum);
+        const result = operate(operator, firstNum, secondNum);
+        // round up to 7th decimal place
+        const formattedNumber = Math.round(result * 10000000) / 10000000;
+        display.textContent = formattedNumber;
     }
     maintainingDisplay = true;
 }
